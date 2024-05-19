@@ -31,12 +31,16 @@ contract SmartContract {
     value = _newValue;
   }
 
+
   function assertValue(uint256 _num) external pure returns (uint256) {
+  
     assert(_num >= 200 && _num <= 4000);
     return _num;
   }
 
+
   function revertValue(uint256 _num) external pure returns (uint256) {
+  
     if (!(_num >= 200 && _num <= 4000)) {
       revert("It must have a value between 200 and 4000.");
     }
