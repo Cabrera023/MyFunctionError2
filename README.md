@@ -26,6 +26,7 @@ contract SmartContract {
   uint256 public value;
 
   function requireValue(uint256 _newValue) external {
+  
     require(_newValue >= 200 && _newValue <= 4000, "There is a value range of 200 to 4000 that you cannot exceed.");
     value = _newValue;
   }
