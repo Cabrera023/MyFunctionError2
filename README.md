@@ -19,36 +19,21 @@ Create folder inside Remix.
 
 # Function Code
 
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.23;
+ // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.1;
 
-contract SmartContract {
-  uint256 public value;
+contract ErrorHandlingContract {
+  uint public value;
 
-  function requireValue(uint256 _newValue) external {
-  
-    require(_newValue >= 200 && _newValue <= 4000, "There is a value range of 200 to 4000 that you cannot exceed.");
-    value = _newValue;
+function setvalue(uint _value) public {
+
+    require(_value > 0, "Value must be greater than 0.");
+
+    assert(_value != value);
+
+    value = _value;
   }
 
-
-  function assertValue(uint256 _num) external pure returns (uint256) {
-  
-    assert(_num >= 200 && _num <= 4000);
-    return _num;
-  }
-
-
-  function revertValue(uint256 _num) external pure returns (uint256) {
-  
-    if (!(_num >= 200 && _num <= 4000)) {
-      revert("It must have a value between 200 and 4000.");
-    }
-
-    return _num;
-  }
-  
-}
 
 # Autor
 * Michaela Ariane B. Cabrera
