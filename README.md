@@ -24,6 +24,7 @@ Create folder inside Remix.
 pragma solidity ^0.8.1;
 
 contract ErrorHandlingContract {
+
   uint public value;
 
 function setvalue(uint _value) public {
