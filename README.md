@@ -44,6 +44,7 @@ function setvalue(uint _value) public {
 
     return _numerator / _denominator;
   }
+  
 }
 
 
