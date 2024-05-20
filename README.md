@@ -34,6 +34,18 @@ function setvalue(uint _value) public {
     value = _value;
   }
 
+ function performDivision(uint _numerator, uint _denominator) public pure returns (uint) {
+ 
+    require(_denominator != 0, "Cannont divide by zero.");
+
+    if (_numerator % _denominator != 0) {
+        revert("Numerator must be divisible by denominator.");
+    }
+
+    return _numerator / _denominator;
+  }
+}
+
 
 # Autor
 * Michaela Ariane B. Cabrera
