@@ -19,34 +19,47 @@ Create folder inside Remix.
 
 # Function Code
 
- // SPDX-License-Identifier: MIT
- 
-pragma solidity ^0.8.1;
+// SPDX-License-Identifier: MIT
 
-contract ErrorHandlingContract {
+pragma solidity ^0.8.23;
 
-  uint public value;
+contract FunctionAndErrors1 {
 
-function setvalue(uint _value) public {
+    uint256 public value;
 
-    require(_value > 0, "Value must be greater than 0.");
-
-    assert(_value != value);
-
-    value = _value;
-  }
-
- function performDivision(uint _numerator, uint _denominator) public pure returns (uint) {
- 
-    require(_denominator != 0, "Cannont divide by zero.");
-
-    if (_numerator % _denominator != 0) {
-        revert("Numerator must be divisible by denominator.");
+    function requireValue(uint256 _newValue) external {
+    
+        require(_newValue >= 1 && _newValue <= 2000, "There is a value range of 1 to 2000 that you cannot exceed.");
+        
+        value = _newValue;
     }
 
-    return _numerator / _denominator;
-  }
-  
+    function assertValue(uint256 _num) external pure returns (uint256) {
+    
+        assert(_num >= 1 && _num <= 2000);
+        
+        return _num;
+    }
+
+    function revertValue(uint256 _num) external pure returns (uint256) {
+    
+        if (!(_num >= 1 && _num <= 2000)) {
+        
+            revert("The value must be between 1 and 2000.");
+        }
+        return _num;
+    }
+
+    // Function where sets a given value if each of the checks match.
+    
+    function setValue(uint256 _value) external {
+    
+        require(_value >= 1 && _value <= 2000, "Value must be between 1 and 2000.");
+        
+        assert(_value >= 1 && _value <= 2000); 
+
+        value = _value;
+    }
 }
 
 
